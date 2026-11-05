@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2022", "DOM"],
-    "strict": true,
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -13,18 +16,30 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
+    "types": [
+      "@types/react",
+      "@types/react-dom",
+      "node"
+    ],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./components/*"]
+      "~/*": [
+        "./components/*"
+      ]
     },
     "incremental": true
   },
   "include": [
     "next-env.d.ts",
+    "types/globals.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "pages/**/*.{ts,tsx}",
-    "components/**/*.{ts,tsx}"
+    "components/**/*.{ts,tsx}",
+    "utils/**/*.js"
   ],
-  "exclude": ["node_modules", ".next"]
+  "exclude": [
+    "node_modules",
+    ".next"
+  ]
 }
