@@ -450,7 +450,7 @@ function AshrafPortfolio3D() {
     };
     const holder = containerRef.current;
     holder?.addEventListener("touchstart", start);
-    holde
+    holder?.addEventListener("touchmove", move);
     holder?.addEventListener("touchend", up);
     return () => {
       holder?.removeEventListener("touchstart", start);
