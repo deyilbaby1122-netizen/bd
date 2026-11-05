@@ -11,3 +11,6 @@ next-env.d.ts
 # OS / editor
 .DS_Store
 *.swp
+
+# typescript build info
+tsconfig.tsbuildinfo
