@@ -14,3 +14,7 @@ next-env.d.ts
 
 # typescript build info
 tsconfig.tsbuildinfo
+
+.vercel
+.env*
+force deployment
