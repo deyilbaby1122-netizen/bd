@@ -1,0 +1,8 @@
+/*
+ * Global CSS for Ashraf's 3D Interactive Portfolio
+ * Using Tailwind CSS for styling
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

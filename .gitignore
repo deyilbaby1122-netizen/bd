@@ -1,0 +1,13 @@
+# dependencies
+node_modules/
+
+# build output
+.next/
+
+# typescript
+next-env.d.ts
+*.log
+
+# OS / editor
+.DS_Store
+*.swp
