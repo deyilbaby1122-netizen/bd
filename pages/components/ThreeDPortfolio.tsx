@@ -462,8 +462,9 @@ function AshrafPortfolio3D() {
   // ── Rapier physics init ──────────────────────────────────────────────────
   useEffect(() => {
     (async () => {
-      await PhysicsWorld.init();
-      physics.current = new PhysicsWorld();
+      const p = new PhysicsWorld();
+      await p.init();
+      physics.current = p;
       await world.current?.build();
       setLoading(false);
     })();
@@ -491,9 +492,9 @@ function AshrafPortfolio3D() {
         gl={{ antialias: true, alpha: false, preserveDrawingBuffer: true }}
         camera={{ position: [0, 8, 18], fov: 60 }}
         dpr={[1, 2]}
-        onCreated={(c) => { c.renderer.setClearColor(0x0a0a1a); }}
+        onCreated={(c) => { c.gl.setClearColor(0x0a0a1a); }}
       >
-        <background color="#0a0a1a" />
+        <color attach="background" args={["#0a0a1a"]} />
 
         {/* Ambient light */}
         <ambientLight intensity={0.2} />
@@ -502,7 +503,8 @@ function AshrafPortfolio3D() {
           position={[0, 10, 5]}
           intensity={0.5}
           castShadow
-          shadow-map-size={[1024, 1024]}
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
         />
         {/* Fog */}
         <fog args={[0x0a0a1a, 20, 120]} />
@@ -519,7 +521,7 @@ function AshrafPortfolio3D() {
           <group position={[0, 0.3, 0]}>
             <mesh>
               <sphereGeometry args={[0.3, 12, 12]} />
-              <meshBasicMaterial color="#f60" emissive="#f60" emissive-intensity={0.3} />
+              <meshBasicMaterial color="#f60" />
             </mesh>
           </group>
         </OrbitPoint>
@@ -543,37 +545,37 @@ function AshrafPortfolio3D() {
             <group position={[0, 0.3, 0]}>
               <mesh>
                 <sphereGeometry args={[0.2, 12, 12]} />
-                <meshBasicMaterial color="#f60" emissive="#f60" emissive-intensity={0.4} />
+                <meshBasicMaterial color="#f60" />
               </mesh>
             </group>
             <group position={[0, 0.3, 20]}>
               <mesh>
                 <sphereGeometry args={[0.2, 12, 12]} />
-                <meshBasicMaterial color="#f60" emissive="#f60" emissive-intensity={0.4} />
+                <meshBasicMaterial color="#f60" />
               </mesh>
             </group>
             <group position={[20, 0.3, 0]}>
               <mesh>
                 <sphereGeometry args={[0.2, 12, 12]} />
-                <meshBasicMaterial color="#f60" emissive="#f60" emissive-intensity={0.4} />
+                <meshBasicMaterial color="#f60" />
               </mesh>
             </group>
             <group position={[20, 0.3, 20]}>
               <mesh>
                 <sphereGeometry args={[0.2, 12, 12]} />
-                <meshBasicMaterial color="#f60" emissive="#f60" emissive-intensity={0.4} />
+                <meshBasicMaterial color="#f60" />
               </mesh>
             </group>
             <group position={[40, 0.3, 0]}>
               <mesh>
                 <sphereGeometry args={[0.2, 12, 12]} />
-                <meshBasicMaterial color="#f60" emissive="#f60" emissive-intensity={0.4} />
+                <meshBasicMaterial color="#f60" />
               </mesh>
             </group>
             <group position={[40, 0.3, 20]}>
               <mesh>
                 <sphereGeometry args={[0.2, 12, 12]} />
-                <meshBasicMaterial color="#f60" emissive="#f60" emissive-intensity={0.4} />
+                <meshBasicMaterial color="#f60" />
               </mesh>
             </group>
           </group>
@@ -610,7 +612,7 @@ function AshrafPortfolio3D() {
       <div className="absolute top-6 right-24 z-30">
         <button
           onClick={() => {
-            if (fullscreenElement) {
+            if (document.fullscreenElement) {
               document.exitFullscreen();
             } else {
               canvasRef.current?.requestFullscreen();
